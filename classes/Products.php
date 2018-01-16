@@ -10,7 +10,7 @@ class Products extends \PDO
     }
 
     private function generateRandomString($length = 10) {
-        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
         $charactersLength = strlen($characters);
         $randomString = '';
         for ($i = 0; $i < $length; $i++) {
@@ -22,18 +22,15 @@ class Products extends \PDO
     public function newProducts($post)
     {
         $randomString = $this->generateRandomString(6);
-        if($this->db->query("INSERT INTO 'products' (name, price, product_number, description) 
+        $this->db->query("INSERT INTO products (name, price, product_number, description) 
                              VALUES (:name, :price, :product_number, :description)",
                              [
                                  ':name' => $post['name'],
                                  ':price' => $post['price'],
-                                 ':product_numer' => $randomString,
+                                 ':product_number' => $randomString,
                                  ':description' => $post['description']
-                             ]))
-                             {
-                                return true;
-                             } 
-                             return false;
+                             ]);
+        return true;
     }
 
     public function singleProduct($id)

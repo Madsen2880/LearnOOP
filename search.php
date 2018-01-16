@@ -1,7 +1,7 @@
 <?php
     if(isset($_POST['search'])) {
         if(strlen($_POST['navn']) > 6 || strlen($_POST['navn']) < 1) {
-            $error['navn'] = '<div class="alert alert-danger alert-dismissible" id="myAlert">
+            $error['navn'] = '<div class="alert alert-danger alert-dismissible" data-dismiss="alert" id="myAlert">
             <a href="#" class="close">&times;</a>
             <i class="glyphicon glyphicon-warning-sign"></i>
             Din søgning skal være mellem 1 og 6 tegn.

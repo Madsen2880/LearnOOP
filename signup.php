@@ -61,7 +61,7 @@ if(isset($_POST['btn-signup']))
                     foreach($error as $error)
                     {
                         ?>
-                        <div class="alert alert-danger alert-dismissible" id="myAlert">
+                        <div class="alert alert-danger alert-dismissible" data-dismiss="alert" id="myAlert">
                             <a href="#" class="close">&times;</a>
                             <i class="glyphicon glyphicon-warning-sign"></i> &nbsp;<?php echo $error; ?>
                         </div>
