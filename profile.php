@@ -1,13 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: mcarp
- * Date: 16-01-2018
- * Time: 18:52
- */
-
-
-?>
 <div class="container">
     <div class="row">
         <div class="col-md-12" >
@@ -65,11 +55,11 @@
                                 </tbody>
                             </table>
 
-                            <a href="#" class="btn btn-primary">Rediger Profil</a>
+                            <a href="?side=redigerBruger&id=<?= $_SESSION['user_id'] ?>" class="btn btn-primary">Rediger Profil</a>
                             <?php
-                            if ($users->fk_userrole <= 2) {
+                            if ($users->fk_userrole <= 3) {
                                 if ($users->id != 1) {
-                                    echo '<a href="#" class="btn btn-danger">Slet Profil</a>';
+                                    echo '<a href="?side=sletBruger&id='. $_SESSION['user_id'] . '" class="btn btn-danger">Slet Profil</a>';
                                 }
                             }
                             ?>

@@ -48,4 +48,29 @@ class Products extends \PDO
     {
         return $this->db->toList("SELECT * FROM products WHERE `name` LIKE CONCAT ('%',:searchName,'%')", [':searchName' => $post]);
     }
+
+    public function deleteProduct($id)
+    {
+        return $this->db->query("DELETE FROM products WHERE id = :id", [':id' => $id]);
+    }
+
+    public function editProduct($post)
+    {
+        $this->db->query("UPDATE `products` SET `name`=:name,`price`=:price,`description`=:description 
+                          WHERE id = :id",
+            [
+                ':id' => $post['id'],
+                ':name' => $post['name'],
+                ':price' => $post['price'],
+                ':description' => $post['description']
+            ]);
+        return true;
+    }
 }
+
+
+
+
+
+
+

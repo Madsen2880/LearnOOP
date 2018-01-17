@@ -24,10 +24,7 @@ include_once './inc/head.php';
 include_once './inc/menu.php';
 
 if ($user->is_loggedin() == true && $debug == 1){
-    echo '<div class="debug">';
-    echo '<h4><i class="fa fa-bug"></i> DEBUG MENU <i class="fa fa-bug"></i></h4>';
-    echo '<p>'. print_r($_SESSION) .'</p>';
-    echo '</div>';
+    include_once './inc/debug.php';
 }
 
 if(isset($_POST['search'])) {
@@ -65,41 +62,41 @@ if ($user->secCheckMethod('GET') || $user->secCheckMethod('POST')) {
             case 'opret';
                 include_once './signup.php';
                 break;
-
-            case 'joined';
-                include_once './joined.php';
-                break;
-
             case 'beskeder';
                 include_once './messages.php';
                 break;
-
             case 'sletEmail';
                 include_once './deleteEmail.php';
                 break;
-
             case 'opdater';
                 include_once './update.php';
                 break;
-
             case 'produkter';
                 include_once './products.php';
                 break;
-
             case 'search';
                 include_once './search.php';
                 break;
-
             case 'produkt';
                 include_once './singleProduct.php';
                 break;
-
             case 'nytProdukt';
                 include_once './newProduct.php';
                 break;
-
             case 'profil';
                 include_once './profile.php';
+                break;
+            case 'sletProdukt';
+                include_once './deleteProduct.php';
+                break;
+            case 'redigerProdukt';
+                include_once './editProduct.php';
+                break;
+            case 'sletBruger';
+                include_once './deleteUser.php';
+                break;
+            case 'redigerBruger';
+                include_once './editUser.php';
                 break;
 
             default:
@@ -112,3 +109,28 @@ if ($user->secCheckMethod('GET') || $user->secCheckMethod('POST')) {
 }
 
 include_once './inc/footer.php';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -305,4 +305,44 @@ class User extends \PDO
         return true;
     }
 
+    public function deleteUser($id)
+    {
+        return $this->db->query("DELETE FROM users WHERE id = :id", [':id' => $id]);
+    }
+
+    public function editUser($post)
+    {
+
+        if(empty($post['password'])) {
+            $this->db->query("UPDATE `users` SET `firstname`=:firstname,`lastname`=:lastname,`username`=:username, `email`=:email, `address`=:address, `phone`=:phone 
+                          WHERE id = :id",
+                [
+                    ':id' => $post['id'],
+                    ':firstname' => $post['firstname'],
+                    ':lastname' => $post['lastname'],
+                    ':username' => $post['username'],
+                    ':email' => $post['email'],
+                    ':address' => $post['address'],
+                    ':phone' => $post['phone']
+                ]);
+        } if(!empty($post['password'])) {
+        $new_password = password_hash($post['password'], PASSWORD_BCRYPT, ['cost' => 12]);
+
+        $this->db->query("UPDATE `users` SET `firstname`=:firstname,`lastname`=:lastname,`username`=:username, `email`=:email, `address`=:address, `phone`=:phone, `password` = :password 
+                          WHERE id = :id",
+            [
+                ':id' => $post['id'],
+                ':firstname' => $post['firstname'],
+                ':lastname' => $post['lastname'],
+                ':username' => $post['username'],
+                ':email' => $post['email'],
+                ':address' => $post['address'],
+                ':phone' => $post['phone'],
+                ':password' => $new_password
+            ]);
+    }
+
+        return true;
+    }
+
 }
